@@ -409,23 +409,22 @@
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('user.login'))
             <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth('users')
-                    <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ホーム画面へ</a>
+                @auth('companies')
+                    <a href="{{ url('/company/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">ホーム画面へ</a>
                 @else
                     <div class="flex">
                         <div>
-                            <a href="{{ route('user.login') }}"
+                            <a href="{{ route('company.login') }}"
                                 class="text-sm text-gray-700 dark:text-gray-500 underline">ログイン</a>
                         </div>
                         <div class="ml-4">
-                            <a href="{{ url('/company')}}"
-                                class="text-sm text-gray-700 dark:text-gray-500 underline">企業の方はこちらから</a>
+                            <a href="{{ url('/') }}"
+                                class="text-sm text-gray-700 dark:text-gray-500 underline">ユーザーの方はこちらから</a>
                         </div>
-                        @if (Route::has('user.register'))
+                        @if (Route::has('company.register'))
                             <div>
-                                <a href="{{ route('user.register') }}"
+                                <a href="{{ route('company.register') }}"
                                     class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">新規登録</a>
-
                             </div>
                         @endif
                     </div>

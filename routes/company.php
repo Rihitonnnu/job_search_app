@@ -11,8 +11,15 @@ use App\Http\Controllers\Company\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
-    return view('welcome');
+    // dd('a');
+    return view('company.welcome');
 });
+
+// dd('a');
+
+Route::get('/dashboard', function () {
+    return view('company.dashboard');
+})->middleware(['auth:companies'])->name('dashboard');
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
