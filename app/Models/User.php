@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\UserDetailInfo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -17,10 +19,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $attributes=[
+        'info_registration_check'=>false,
+    ];
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'registration',
     ];
 
     /**
@@ -41,4 +48,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function user_detail_info(){
+        return $this->hasOne(UserDetailInfo::class);
+    }
 }
