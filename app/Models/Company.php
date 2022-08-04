@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\CompanyOffer;
+
 
 class Company extends Authenticatable
 {
@@ -33,4 +35,8 @@ class Company extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function company_offer(){
+        return $this->hasMany(CompanyOffer::class);
+    }
 }

@@ -12,7 +12,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="mt-2 w-1/2 text-center mx-auto">
-                            <p class="text-xl font:bold">基本情報</p>
+                            <p class="text-xl font-bold">基本情報</p>
                             <p >~自分の情報を入力してみましょう！~</p>
                         </div>
                         <div class="p-2 w-1/2 mx-auto">

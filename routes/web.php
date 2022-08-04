@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\User\UserDetailInfoController;
+use App\Http\Controllers\User\UserInfoController;
+use App\Http\Controllers\User\RecruitController;
 use App\Http\Controllers\User\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +20,11 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
-Route::resource('info',UserDetailInfoController::class)
+Route::resource('info',UserInfoController::class)
 ->middleware(['auth:users']);
 
-// Route::get('/dashboard', function () {
-//     return view('user.dashboard');
-// })->middleware(['auth:users'])->name('dashboard');
+Route::resource('recruit',RecruitController::class)
+->middleware(['auth:users']);
 
 Route::get('/dashboard',[DashboardController::class,'show'])->middleware(['auth:users'])->name('dashboard');
 

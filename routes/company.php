@@ -8,6 +8,9 @@ use App\Http\Controllers\Company\Auth\NewPasswordController;
 use App\Http\Controllers\Company\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Company\Auth\RegisteredUserController;
 use App\Http\Controllers\Company\Auth\VerifyEmailController;
+
+use App\Http\Controllers\Company\RegistrationJobOfferController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
@@ -20,6 +23,9 @@ Route::get('/',function(){
 Route::get('/dashboard', function () {
     return view('company.dashboard');
 })->middleware(['auth:companies'])->name('dashboard');
+
+Route::resource('registration',RegistrationJobOfferController::class)
+->middleware(['auth:companies']);
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])

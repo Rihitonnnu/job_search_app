@@ -49,7 +49,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user_detail_info(){
+    public function user_info(){
         return $this->hasOne(UserDetailInfo::class);
     }
 }

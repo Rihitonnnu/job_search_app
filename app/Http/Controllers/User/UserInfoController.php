@@ -5,13 +5,13 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\Auth\AuthenticatedSessionController;
 use App\Models\User;
-use App\Models\UserDetailInfo;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
-class UserDetailInfoController extends Controller
+class UserInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,7 +43,7 @@ class UserDetailInfoController extends Controller
     {
         try {
             DB::transaction(function () use ($request) {
-                $infos = UserDetailInfo::create([
+                $infos = UserInfo::create([
                     'user_id'=>Auth::id(),
                     'grade'=>$request->grade,
                     'university'=>$request->university,
