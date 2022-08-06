@@ -19,7 +19,7 @@ class CompanyOfferSeeder extends Seeder
             'company_id'=>1,
             'headline'=>'見出し',
             'job_title'=>'職種名',
-            'introduce'=>'紹介文',
+            'introduce'=>'こんにちは！求人募集中です！',
         ]);
     }
 }

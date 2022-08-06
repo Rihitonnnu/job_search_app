@@ -20,8 +20,8 @@ class RegistrationJobOfferController extends Controller
     public function index()
     {
         $offers=CompanyOffer::with('company_language')->get();
-        return view('company.registration_job.index',compact('users'));
-    }
+        $languages=['ruby','javascript','java','python','c','php'];
+        return view('company.registration_job.index',compact(['offers','languages']));    }
 
     /**
      * Show the form for creating a new resource.

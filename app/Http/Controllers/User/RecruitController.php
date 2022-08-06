@@ -4,6 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\CompanyOffer;
+use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
+
 
 class RecruitController extends Controller
 {
@@ -14,7 +18,9 @@ class RecruitController extends Controller
      */
     public function index()
     {
-        return view('user.recruit.index');
+        $offers=CompanyOffer::with('company_language')->get();
+        $languages=['ruby','javascript','java','python','c','php'];
+        return view('user.recruit.index',compact(['offers','languages']));
     }
 
     /**
