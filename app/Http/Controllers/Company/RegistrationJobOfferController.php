@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyOffer;
 use App\Models\CompanyLanguage;
+use App\Http\Requests\JobOfferRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -39,9 +40,9 @@ class RegistrationJobOfferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobOfferRequest $request)
     {
-        
+        // dd($request->languages);
         try {
             DB::transaction(function () use ($request) {
                 $offers = CompanyOffer::create([

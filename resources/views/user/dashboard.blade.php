@@ -16,6 +16,7 @@
                     <div class="ml-4">
                         <button onclick="location.href=' {{route('user.info.create')}} '" class="bg-blue-700 hover:bg-blue-600 text-white rounded px-4 py-2">登録はこちらから</button>
                     </div>
+                    
                 </div>
             </div>
         </div>

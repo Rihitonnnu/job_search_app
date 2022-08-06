@@ -14,6 +14,15 @@
                         <div class="mt-2 w-1/2 text-center mx-auto">
                             <p class="text-xl font-bold">求人情報登録</p>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger mt-3 text-center">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li class="text-red-500">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="p-2 w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">求人の見出し ※必須</label>
@@ -48,11 +57,11 @@
                                             class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">Java
                                     </div>
                                     <div class="mr-5">
-                                        <input type="checkbox" id="languages" name="languages[]"  value=python
+                                        <input type="checkbox" id="languages" name="languages[]" value=python
                                             class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">Python
                                     </div>
-                                    <div class="mr-5"> 
-                                        <input type="checkbox" id="languages" name="languages[]"  value=c
+                                    <div class="mr-5">
+                                        <input type="checkbox" id="languages" name="languages[]" value=c
                                             class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">C
                                     </div>
                                     <div class="mr-5">
