@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class RegistrationJobOfferController extends Controller
 {
@@ -18,11 +19,16 @@ class RegistrationJobOfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $offers=CompanyOffer::with('company_language')->get();
-        $languages=['ruby','javascript','java','python','c','php'];
-        return view('company.registration_job.index',compact(['offers','languages']));    }
+        $offers = CompanyOffer::with('company_language')->get();
+        $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
+        return view('company.registration_job.index', compact(['offers', 'languages']));
+    }
+    // $messageKey,$flashMessage
+
+    // ,'messageKey','flashMessage'
 
     /**
      * Show the form for creating a new resource.
@@ -42,45 +48,50 @@ class RegistrationJobOfferController extends Controller
      */
     public function store(JobOfferRequest $request)
     {
-        // dd($request->languages);
+        // dd($request->session());
         try {
             DB::transaction(function () use ($request) {
                 $offers = CompanyOffer::create([
-                    'company_id'=>Auth::id(),
-                    'headline'=>$request->headline,
-                    'job_title'=>$request->job_title,
-                    'introduce'=>$request->introduce,
+                    'company_id' => Auth::id(),
+                    'headline' => $request->headline,
+                    'job_title' => $request->job_title,
+                    'introduce' => $request->introduce,
                 ]);
 
                 //言語のtrue or falseのための初期化
-                $languages=[
-                    "ruby"=>0,
-                    "javascript"=>0,
-                    "java"=>0,
-                    "python"=>0,
-                    "c"=>0,
-                    "php"=>0,
+                $languages = [
+                    "ruby" => 0,
+                    "javascript" => 0,
+                    "java" => 0,
+                    "python" => 0,
+                    "c" => 0,
+                    "php" => 0,
                 ];
 
-                foreach($request->languages as $language){
-                    $languages[$language]=1;
-                }  
-                
-                $company_language=CompanyLanguage::create([
-                    'company_offer_id'=>$offers->id,
-                    'ruby'=>$languages['ruby'],
-                    'javascript'=>$languages['javascript'],
-                    'java'=>$languages['java'],
-                    'python'=>$languages['python'],
-                    'c'=>$languages['c'],
-                    'php'=>$languages['php'],
+                foreach ($request->languages as $language) {
+                    $languages[$language] = 1;
+                }
+
+                $company_language = CompanyLanguage::create([
+                    'company_offer_id' => $offers->id,
+                    'ruby' => $languages['ruby'],
+                    'javascript' => $languages['javascript'],
+                    'java' => $languages['java'],
+                    'python' => $languages['python'],
+                    'c' => $languages['c'],
+                    'php' => $languages['php'],
                 ]);
             }, 2);
         } catch (\Throwable $e) {
             Log::error($e);
             throw $e;
-        }  
-        return to_route('company.registration.index');
+        }
+
+        //フラッシュメッセージ
+        session()->flash('message','登録が完了しました。');
+        Session::flash('message','登録が完了しました。');
+
+        return redirect()->route('company.registration.index')->with('message','登録が完了しました。');
     }
 
     /**
@@ -127,4 +138,14 @@ class RegistrationJobOfferController extends Controller
     {
         //
     }
+
+    // public function storeToIndex($messageKey, $flashMessage, $foo)
+    // {
+    //     dd('a');
+    //     if ($foo) {
+    //         $offers = CompanyOffer::with('company_language')->get();
+    //         $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
+    //         return view('company.registration.index',compact(['offers','languages','messageKey','flashMessage']));
+    //     }
+    // }
 }

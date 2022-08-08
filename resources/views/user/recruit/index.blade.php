@@ -18,7 +18,7 @@
                                     <div class="h-1 w-20 bg-indigo-500 rounded"></div>
                                 </div>
                             </div>
-                            <div class="flex flex-wrap m-4">
+                            <div class="flex flex-wrap">
                                 @foreach ($offers as $offer)
                                     <div class="p-4">
                                         <div class="bg-gray-100 p-6 rounded-lg">

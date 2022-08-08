@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class UserInfoController extends Controller
 {
@@ -63,6 +64,10 @@ class UserInfoController extends Controller
         $user=User::find(Auth::id());
         $user->registration=1;
         $user->save();
+
+        //フラッシュメッセージ
+        session()->flash('message','登録が完了しました。');
+        Session::flash('message','登録が完了しました。');
         return view('user.dashboard',compact('user'));
     }
 

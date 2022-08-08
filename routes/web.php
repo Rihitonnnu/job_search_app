@@ -28,4 +28,6 @@ Route::resource('recruit',RecruitController::class)
 
 Route::get('/dashboard',[DashboardController::class,'show'])->middleware(['auth:users'])->name('dashboard');
 
+
+
 require __DIR__.'/auth.php';
