@@ -48,14 +48,19 @@ class RegistrationJobOfferController extends Controller
      */
     public function store(JobOfferRequest $request)
     {
-        // dd($request->session());
+        //thumbnailの保存
+        $filename=$request->file('thumbnail')->store('');
+        $thumbnail_path=$request->file('thumbnail')->storeAs('public/img/',$filename);
+
+        //データ更新
         try {
-            DB::transaction(function () use ($request) {
+            DB::transaction(function () use ($request,$thumbnail_path) {
                 $offers = CompanyOffer::create([
                     'company_id' => Auth::id(),
                     'headline' => $request->headline,
                     'job_title' => $request->job_title,
                     'introduce' => $request->introduce,
+                    'thumbnail'=>basename($thumbnail_path),
                 ]);
 
                 //言語のtrue or falseのための初期化

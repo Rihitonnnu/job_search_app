@@ -17,6 +17,7 @@ class CompanyOffer extends Model
         'headline',
         'job_title',
         'introduce',
+        'thumbnail',
     ];
 
     public function company(){

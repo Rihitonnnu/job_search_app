@@ -28,8 +28,13 @@
                                 @foreach ($offers as $offer)
                                     <div class="p-4">
                                         <div class="bg-gray-100 p-6 rounded-lg">
-                                            <img class="h-40 rounded w-full object-cover object-center mb-6"
-                                                src="https://dummyimage.com/720x400" alt="content">
+                                            @if ($offer->thumbnail != null)
+                                                <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                                    src="{{ asset('storage/img/' . $offer->thumbnail) }}" alt="content">
+                                            @else
+                                                <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                                    src="https://dummyimage.com/720x400" alt="content">
+                                            @endif
                                             <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
                                                 {{ $offer->job_title }}</h3>
                                             <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
