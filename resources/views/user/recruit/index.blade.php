@@ -24,7 +24,7 @@
                                         <div class="bg-gray-100 p-6 rounded-lg">
                                             @if ($offer->thumbnail != null)
                                                 <img class="h-40 rounded w-full object-cover object-center mb-6"
-                                                    src="{{ asset('storage/img/' . $offer->thumbnail) }}"
+                                                    src="{{ asset('storage/' . $offer->thumbnail) }}"
                                                     alt="content">
                                             @else
                                                 <img class="h-40 rounded w-full object-cover object-center mb-6"

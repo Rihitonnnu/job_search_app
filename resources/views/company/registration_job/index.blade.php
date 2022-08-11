@@ -30,7 +30,7 @@
                                         <div class="bg-gray-100 p-6 rounded-lg">
                                             @if ($offer->thumbnail != null)
                                                 <img class="h-40 rounded w-full object-cover object-center mb-6"
-                                                    src="{{ asset('storage/img/' . $offer->thumbnail) }}" alt="content">
+                                                    src="{{ asset('storage/' . $offer->thumbnail) }}" alt="content">
                                             @else
                                                 <img class="h-40 rounded w-full object-cover object-center mb-6"
                                                     src="https://dummyimage.com/720x400" alt="content">
@@ -49,6 +49,22 @@
                                                         </p>
                                                     @endif
                                                 @endforeach
+                                            </div>
+                                            <div class="flex">
+                                                <div class="p-2">
+                                                    <button
+                                                        onclick="location.href='{{ route('company.registration.edit', ['registration' => $offer->id]) }}'"
+                                                        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
+                                                </div>
+                                                <form
+                                                    action="{{ route('company.registration.destroy',['registration'=>$offer->id])}}" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <div class="p-2">
+                                                        <button type="submit"
+                                                            class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">削除する</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

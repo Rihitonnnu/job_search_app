@@ -26,14 +26,14 @@
                         <div class="p-2 w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">求人の見出し ※必須</label>
-                                <input type="text" id="headline" name="headline" required
+                                <input type="text" id="headline" name="headline" value="{{ old("headline") }}" required
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
                         <div class="p-2 w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">職種名 ※必須</label>
-                                <input type="text" id="job_title" name="job_title" required
+                                <input type="text" id="job_title" name="job_title" value="{{ old("job_title") }}" required
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                         <div class="p-2 w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">紹介文 ※必須</label>
-                                <textarea type="text" id="introduce" name="introduce" required
+                                <textarea type="text" id="introduce" name="introduce" value="{{ old("introduce") }}" required
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
                             </div>
                         </div>
