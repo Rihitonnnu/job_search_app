@@ -22,20 +22,32 @@
                                 @foreach ($offers as $offer)
                                     <div class="p-4">
                                         <div class="bg-gray-100 p-6 rounded-lg">
-                                            <img class="h-40 rounded w-full object-cover object-center mb-6"
-                                                src="https://dummyimage.com/720x400" alt="content">
+                                            @if ($offer->thumbnail != null)
+                                                <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                                    src="{{ asset('storage/img/' . $offer->thumbnail) }}"
+                                                    alt="content">
+                                            @else
+                                                <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                                    src="https://dummyimage.com/720x400" alt="content">
+                                            @endif
                                             <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
                                                 {{ $offer->job_title }}</h3>
-                                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{{ $offer->headline }}
+                                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
+                                                {{ $offer->headline }}
                                             </h2>
                                             <p class="leading-relaxed text-base mb-4">{{ $offer->introduce }}</p>
                                             <p class="leading-relaxed text-base">開発環境</p>
                                             <div class="flex flex-wrap w-full">
-                                                @foreach($languages as $language)
-                                                    @if($offer->company_language->$language)
-                                                    <p class="leading-relaxed text-base mr-2">{{ $language }}</p>
+                                                @foreach ($languages as $language)
+                                                    @if ($offer->company_language->$language)
+                                                        <p class="leading-relaxed text-base mr-2">{{ $language }}
+                                                        </p>
                                                     @endif
                                                 @endforeach
+                                            </div>
+                                            <div class="pt-4 w-full">
+                                                <button onclick="location.href=' {{ route('user.recruit.create') }} '"
+                                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base">応募する</button>
                                             </div>
                                         </div>
                                     </div>

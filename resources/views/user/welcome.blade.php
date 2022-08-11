@@ -47,38 +47,49 @@
                         <img src="{{ asset('img/coding.jpg') }}" alt="">
                     </div>
                     <div class="flex flex-col sm:flex-row mt-10">
-                        <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-                            <div
-                                class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" class="w-10 h-10" viewBox="0 0 24 24">
-                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                            </div>
-                            <div class="flex flex-col items-center text-center justify-center">
-                                <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">Phoebe Caulfield</h2>
-                                <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                                <p class="text-base">Raclette knausgaard hella meggs normcore williamsburg enamel pin
-                                    sartorial venmo tbh hot chicken gentrify portland.</p>
-                            </div>
-                        </div>
                         <div
-                            class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                            <p class="leading-relaxed text-lg mb-4">Meggings portland fingerstache lyft, post-ironic
-                                fixie
-                                man bun banh mi umami everyday carry hexagon locavore direct trade art party. Locavore
-                                small
-                                batch listicle gastropub farm-to-table lumbersexual salvia messenger bag. Coloring book
-                                flannel truffaut craft beer drinking vinegar sartorial, disrupt fashion axe normcore meh
-                                butcher. Portland 90's scenester vexillologist forage post-ironic asymmetrical,
-                                chartreuse
-                                disrupt butcher paleo intelligentsia pabst before they sold out four loko. 3 wolf moon
-                                brooklyn.</p>
+                            class="sm:w-full sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                        </div>
+                    </div>
+                    <div role="navigation" aria-label="Main"
+                        class="w-full bg-white dark:bg-gray-800 py-5 flex flex-col xl:flex-row items-start xl:items-center justify-between px-5 xl:px-10 shadow rounded-t">
+                        <div class="mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 lg:w-1/2">
+                            <h1 tabindex="0"
+                                class="focus:outline-none  text-gray-800 dark:text-gray-100 text-xl font-bold">
+                                エンジニアのための就活アプリ
+                            </h1>
+                            <p tabindex="0"
+                                class="focus:outline-none font-normal text-sm text-gray-600 dark:text-gray-100 mt-1">
+                                就活生の方はログインはこちらから</p>
+                        </div>
+                        <div class="lg:hidden w-full relative mt-2 md:mt-4">
+                            <div class="absolute inset-0 m-auto mr-4 z-0 w-6 h-6">
+                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/grey_tabs_on_right-svg1.svg"
+                                    alt="icons">
+                            </div>
+
+                        </div>
+                        <div role="list" class="hidden lg:flex items-center lg:mt-6 xl:mt-0">
+                            @if (Route::has('user.login'))
+                                @auth('users')
+                                    <a href="{{ url('/dashboard') }}"
+                                        class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-smtext-sm text-gray-700 dark:text-gray-500 underline">ホーム画面へ</a>
+                                @endauth
+                                <a href="{{ route('user.login') }}" role="listitem" tabindex="0"
+                                    class=" focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm">ログイン</a>
+                                <a href="{{ url('/company') }}" role="listitem" tabindex="0"
+                                    class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm">企業の方はこちら</a>
+                                @if (Route::has('user.register'))
+                                    <div>
+                                        <a href="{{ route('user.register') }}" role="listitem" tabindex="0"
+                                            class=" focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm">新規登録</a>
+                                    </div>
+                                @endif
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
     </div>
 </body>

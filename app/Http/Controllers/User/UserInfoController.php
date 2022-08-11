@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Throwable;
 
 class UserInfoController extends Controller
 {
@@ -22,7 +23,7 @@ class UserInfoController extends Controller
      */
     public function index()
     {
-        dd('a');
+        // dd('a');
     }
 
     /**
@@ -90,7 +91,13 @@ class UserInfoController extends Controller
      */
     public function edit($id)
     {
-        //
+        try{
+            $info=UserInfo::findOrFail($id);
+        }catch(Throwable $e){
+            $info=null;
+        }
+        // dd($info);
+        return view('user.info.edit',compact(['info']));
     }
 
     /**

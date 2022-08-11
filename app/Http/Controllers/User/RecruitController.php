@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CompanyOffer;
 use App\Models\Company;
+use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -30,7 +32,7 @@ class RecruitController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.recruit.create');
     }
 
     /**
@@ -63,7 +65,8 @@ class RecruitController extends Controller
      */
     public function edit($id)
     {
-        //
+        // dd($id);
+        
     }
 
     /**

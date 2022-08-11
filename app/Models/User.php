@@ -19,9 +19,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $attributes=[
-        'info_registration_check'=>false,
-    ];
+    // protected $attributes=[
+    //     'info_registration_check'=>false,
+    // ];
 
     protected $fillable = [
         'name',
