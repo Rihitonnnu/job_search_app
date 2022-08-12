@@ -25,9 +25,7 @@ class RegistrationJobOfferController extends Controller
 
     public function index()
     {
-        // dd('a');
         $offers = CompanyOffer::with('company_language')->get();
-        // dd($offers[0]->id);
         $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
         return view('company.registration_job.index', compact(['offers', 'languages']));
     }
@@ -196,7 +194,6 @@ class RegistrationJobOfferController extends Controller
         //フラッシュメッセージ
         session()->flash('message', '削除が完了しました。');
         Session::flash('message', '削除が完了しました。');
-        // dd('a');
         return redirect()->route('company.registration.index')->with('message','削除が完了しました。');
     }
 }

@@ -109,7 +109,25 @@ class UserInfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info=UserInfo::findOrFail($id);
+        try {
+            DB::transaction(function () use ($request,$info) {
+                $info->grade=$request->grade;
+                $info->university=$request->university;
+                $info->department=$request->department;
+                $info->course=$request->course;
+                $info->interest_area=$request->interest_area;
+                $info->strong_point=$request->strong_point;
+                $info->save();
+            }, 2);
+        } catch (\Throwable $e) {
+            Log::error($e);
+            throw $e;
+        }
+        //フラッシュメッセージ
+        session()->flash('message','更新が完了しました。');
+        Session::flash('message','更新が完了しました。');
+        return redirect()->route('user.dashboard')->with('message','更新が完了しました。');
     }
 
     /**

@@ -19,7 +19,7 @@
                         募集企業を探そう
                     </x-nav-link>
                     <x-nav-link :href="route('user.info.edit',['info'=>Auth::id()])" :active="request()->routeIs('user.recruit.edit')">
-                        あなたの基本情報
+                        基本情報編集
                     </x-nav-link>
                 </div>
             </div>
