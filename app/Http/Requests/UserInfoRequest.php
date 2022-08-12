@@ -35,8 +35,11 @@ class UserInfoRequest extends FormRequest
     public function messages()
     {
         return[
+            'university.required'=>'在学中の大学名を入力してください',
+            'department.required'=>'学部を入力してください',
             'course.required'=>'学科を入力してください',
-            'strong_area.required'=>'自分の強みは必ず記入してください',
+            'interest_area.required'=>'興味のある分野を入力してください',
+            'strong_area.required'=>'自分の強みを入力してください',
         ];
     }
 

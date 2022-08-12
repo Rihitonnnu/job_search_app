@@ -23,7 +23,7 @@ class UserInfoController extends Controller
      */
     public function index()
     {
-        // dd('a');
+        //
     }
 
     /**
@@ -45,6 +45,7 @@ class UserInfoController extends Controller
     public function store(UserInfoRequest $request)
     {
         try {
+            //ユーザ情報の登録と保存処理
             DB::transaction(function () use ($request) {
                 $infos = UserInfo::create([
                     'user_id'=>Auth::id(),
@@ -62,12 +63,11 @@ class UserInfoController extends Controller
         }
 
         //registration=1に
-        $user=User::find(Auth::id());
+        $user=$request->user();//認証中のユーザーのユーザー情報
         $user->registration=1;
         $user->save();
 
         //フラッシュメッセージ
-        session()->flash('message','登録が完了しました。');
         Session::flash('message','登録が完了しました。');
         return view('user.dashboard',compact('user'));
     }
@@ -96,7 +96,6 @@ class UserInfoController extends Controller
         }catch(Throwable $e){
             $info=null;
         }
-        // dd($info);
         return view('user.info.edit',compact(['info']));
     }
 
@@ -107,7 +106,7 @@ class UserInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserInfoRequest $request, $id)
     {
         $info=UserInfo::findOrFail($id);
         try {
@@ -125,7 +124,6 @@ class UserInfoController extends Controller
             throw $e;
         }
         //フラッシュメッセージ
-        session()->flash('message','更新が完了しました。');
         Session::flash('message','更新が完了しました。');
         return redirect()->route('user.dashboard')->with('message','更新が完了しました。');
     }

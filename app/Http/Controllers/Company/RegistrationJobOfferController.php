@@ -96,9 +96,7 @@ class RegistrationJobOfferController extends Controller
         }
 
         //フラッシュメッセージ
-        session()->flash('message', '登録が完了しました。');
         Session::flash('message', '登録が完了しました。');
-
         return redirect()->route('company.registration.index')->with('message', '登録が完了しました。');
     }
 
@@ -139,41 +137,51 @@ class RegistrationJobOfferController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(JobOfferRequest $request, $id)
     {
         $id -= 1;
         $offers = CompanyOffer::findOrFail(Auth::id())->with('company_language')->get();
         $offer = $offers[$id];
-        $offer->headline = $request->headline;
-        $offer->job_title = $request->job_title;
-        $offer->introduce = $request->introduce;
-        $offer->thumbnail = $request->thumbnail;
-        //言語のtrue or falseのための初期化
-        $languages = [
-            "ruby" => 0,
-            "javascript" => 0,
-            "java" => 0,
-            "python" => 0,
-            "c" => 0,
-            "php" => 0,
-        ];
 
-        foreach ($request->languages as $language) {
-            $languages[$language] = 1;
+        //thumbnailの保存
+        $filename = $request->file('thumbnail')->store('');
+        $thumbnail_path = $request->file('thumbnail')->storeAs('public/', $filename);
+        try {
+            DB::transaction(function () use ($request, $thumbnail_path, $offer) {
+                $offer->headline = $request->headline;
+                $offer->job_title = $request->job_title;
+                $offer->introduce = $request->introduce;
+                $offer->thumbnail = basename($thumbnail_path);
+                //言語のtrue or falseのための初期化
+                $languages = [
+                    "ruby" => 0,
+                    "javascript" => 0,
+                    "java" => 0,
+                    "python" => 0,
+                    "c" => 0,
+                    "php" => 0,
+                ];
+
+                //複数checkboxの内容を保存するための処理
+                foreach ($request->languages as $language) {
+                    $languages[$language] = 1;
+                }
+                $offer->company_language->ruby = $languages['ruby'];
+                $offer->company_language->javascript = $languages['javascript'];
+                $offer->company_language->java = $languages['java'];
+                $offer->company_language->python = $languages['python'];
+                $offer->company_language->c = $languages['c'];
+                $offer->company_language->php = $languages['php'];
+
+                //変更保存
+                $offer->save();
+                $offer->company_language->save();
+            }, 2);
+        } catch (Throwable $e) {
+            Log::error($e);
+            throw $e;
         }
-        $offer->company_language->ruby = $languages['ruby'];
-        $offer->company_language->javascript = $languages['javascript'];
-        $offer->company_language->java = $languages['java'];
-        $offer->company_language->python = $languages['python'];
-        $offer->company_language->c = $languages['c'];
-        $offer->company_language->php = $languages['php'];
-
-        //変更保存
-        $offer->save();
-        $offer->company_language->save();
-
         //フラッシュメッセージ
-        session()->flash('message', '更新が完了しました。');
         Session::flash('message', '更新が完了しました。');
 
         return redirect()->route('company.registration.index')->with('message', '更新が完了しました。');
@@ -187,13 +195,12 @@ class RegistrationJobOfferController extends Controller
      */
     public function destroy($id)
     {
-        $id-=1;
+        $id -= 1;
         $offers = CompanyOffer::findOrFail(Auth::id())->with('company_language')->get();
-        $offer=$offers[$id];
+        $offer = $offers[$id];
         $offer->delete();
         //フラッシュメッセージ
-        session()->flash('message', '削除が完了しました。');
         Session::flash('message', '削除が完了しました。');
-        return redirect()->route('company.registration.index')->with('message','削除が完了しました。');
+        return redirect()->route('company.registration.index')->with('message', '削除が完了しました。');
     }
 }
