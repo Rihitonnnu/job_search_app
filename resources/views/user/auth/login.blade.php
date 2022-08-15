@@ -1,9 +1,11 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <div class="w-1/2 m-auto">
+                <a href="/">
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+            </div>
         </x-slot>
 
         <!-- Session Status -->
@@ -40,13 +42,14 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="block text-center md:flex md:items-center md:justify-end mt-4">
                 @if (Route::has('user.password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('user.password.request') }}">
                         {{ __('パスワードを忘れた方はこちらから') }}
                     </a>
                 @endif
-                <x-button class="ml-3">
+                <br class="md:hidden"/>
+                <x-button class="md:ml-3 mt-2 md:mt-0">
                     ログイン
                 </x-button>
             </div>

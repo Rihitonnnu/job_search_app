@@ -10,77 +10,54 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
 
 <body class="antialiased">
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        @if (Route::has('user.login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth('companies')
-                    <a href="{{ url('/company/dashboard') }}"
-                        class="text-sm text-gray-700 dark:text-gray-500 underline">ホーム画面へ</a>
-                @else
-                    <div class="flex">
-                        <div>
-                            <a href="{{ route('company.login') }}"
-                                class="text-sm text-gray-700 dark:text-gray-500 underline">ログイン</a>
-                        </div>
-                        <div class="ml-4">
-                            <a href="{{ url('/') }}"
-                                class="text-sm text-gray-700 dark:text-gray-500 underline">ユーザーの方はこちらから</a>
-                        </div>
-                        @if (Route::has('company.register'))
-                            <div>
-                                <a href="{{ route('company.register') }}"
-                                    class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">新規登録</a>
-                            </div>
-                        @endif
-                    </div>
-                @endauth
-            </div>
-        @endif
         <section class="text-gray-600 body-font">
             <div class="container px-5 py-24 mx-auto flex flex-col">
                 <div class="lg:w-4/6 mx-auto">
                     <div class="rounded-lg h-64 overflow-hidden">
-                        <img alt="content" class="object-cover object-center h-full w-full"
-                            src="https://dummyimage.com/1200x500">
+                        <img src="{{ asset('img/coding.jpg') }}" alt="">
                     </div>
                     <div class="flex flex-col sm:flex-row mt-10">
-                        <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-                            <div
-                                class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" class="w-10 h-10" viewBox="0 0 24 24">
-                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                            </div>
-                            <div class="flex flex-col items-center text-center justify-center">
-                                <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">Phoebe Caulfield</h2>
-                                <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                                <p class="text-base">Raclette knausgaard hella meggs normcore williamsburg enamel pin
-                                    sartorial venmo tbh hot chicken gentrify portland.</p>
-                            </div>
-                        </div>
                         <div
-                            class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                            <p class="leading-relaxed text-lg mb-4">Meggings portland fingerstache lyft, post-ironic
-                                fixie
-                                man bun banh mi umami everyday carry hexagon locavore direct trade art party. Locavore
-                                small
-                                batch listicle gastropub farm-to-table lumbersexual salvia messenger bag. Coloring book
-                                flannel truffaut craft beer drinking vinegar sartorial, disrupt fashion axe normcore meh
-                                butcher. Portland 90's scenester vexillologist forage post-ironic asymmetrical,
-                                chartreuse
-                                disrupt butcher paleo intelligentsia pabst before they sold out four loko. 3 wolf moon
-                                brooklyn.</p>
+                            class="sm:w-full sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t pt-4 sm:mt-0 text-center sm:text-left">
+                        </div>
+                    </div>
+                    <div role="navigation" aria-label="Main"
+                        class="w-full bg-white dark:bg-gray-800 py-5 md:flex flex-col xl:flex-row items-start xl:items-center justify-between px-5 xl:px-10 shadow rounded-t">
+                        <div class="mb-4 sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0 lg:w-1/2 text-center">
+                            <h1 tabindex="0"
+                                class="focus:outline-none  text-gray-800 dark:text-gray-100 text-xl font-bold">
+                                Prograb
+                            </h1>
+                            <p tabindex="0"
+                                class="focus:outline-none font-normal text-sm text-gray-600 dark:text-gray-100 mt-1">
+                                ～エンジニアのための就活アプリ～</p>
+                        </div>
+                        <div role="list" class="lg:flex items-center lg:mt-6 xl:mt-0">
+                            @if (Route::has('company.login'))
+                                @auth('companies')
+                                    <a href="{{ url('/dashboard') }}"
+                                        class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded md:mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-smtext-sm text-gray-700 dark:text-gray-500 underline">ホーム画面へ</a>
+                                @endauth
+                                <a href="{{ route('company.login') }}" role="listitem" tabindex="0"
+                                    class=" focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded md:mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm">ログイン</a>
+                                <a href="{{ url('/') }}" role="listitem" tabindex="0"
+                                    class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded md:mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm">ユーザーの方はこちら</a>
+                                @if (Route::has('company.register'))
+                                    <div>
+                                        <a href="{{ route('company.register') }}" role="listitem" tabindex="0"
+                                            class=" focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 focus:outline-none cursor-pointer font-normal flex justify-center items-center py-2 px-4 rounded md:mr-4 sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 sm:ml-4 md:ml-4 lg:ml-4 xl:ml-4 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm">新規登録</a>
+                                    </div>
+                                @endif
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
     </div>
 </body>

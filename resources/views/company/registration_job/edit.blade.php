@@ -10,7 +10,7 @@
         @method('put')
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-2">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="mt-2 w-1/2 text-center mx-auto">
                             <p class="text-xl font-bold">求人情報編集</p>
@@ -24,7 +24,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">求人の見出し ※必須</label>
                                 <input type="text" id="headline" name="headline" value="{{ $info[$id]->headline }}"
@@ -32,7 +32,7 @@
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">職種名 ※必須</label>
                                 <input type="text" id="job_title" name="job_title"
@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">開発環境 ※必須</label>
                                 <div class="flex flex-wrap">
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">紹介文 ※必須</label>
                                 <textarea type="text" id="introduce" name="introduce" required
@@ -114,8 +114,8 @@
                             </div>
                         </div>
 
-                        <div class="p-2 w-1/2 mx-auto">
-                            <div class="w-2/3">
+                        <div class="p-2 md:w-1/2 mx-auto">
+                            <div class="md:w-2/3">
                                 <label for="name" class="leading-7 text-sm text-gray-600">募集欄のサムネイル</label>
                                 <img class="h-40 rounded w-full object-cover object-center mb-6"
                                     src="{{ asset('storage/' . $info[$id]->thumbnail) }}" alt="content">

@@ -1,13 +1,15 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
+        <div class="flex justify-between md:h-22 h-17 md:pt-3 md:pb-3">
+            <div class="flex ">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('user.dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a>
+                <div class="md:w-1/6 w-1/3">
+                    <div class="md:w-10/12 w-full">
+                        <a href="{{ route('user.dashboard') }}">
+                            <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Navigation Links -->
@@ -30,7 +32,7 @@
                     <x-slot name="trigger">
                         <form method="POST" action="{{ route('user.logout') }}">
                             @csrf
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-md font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                 <div>ログアウト</div>
                             </button>
                         </form>

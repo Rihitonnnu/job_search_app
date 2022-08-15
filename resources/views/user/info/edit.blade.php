@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            ホーム
+            基本情報編集
         </h2>
     </x-slot>
 
@@ -9,11 +9,11 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200 flex">
+                    <div class="p-6 bg-white border-b border-gray-200 md:flex text-center">
                         <div class="mt-2">
                             <p>あなたの就活情報を登録してみましょう！</p>
                         </div>
-                        <div class="ml-4">
+                        <div class="mt-2 md:ml-4 md:mt-0">
                             <button onclick="location.href=' {{ route('user.info.create') }} '"
                                 class="bg-blue-700 hover:bg-blue-600 text-white rounded px-4 py-2">基本情報を登録する</button>
                         </div>
@@ -27,7 +27,7 @@
             @method('put')
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-2">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div class="mt-2 w-1/2 text-center mx-auto">
                                 <p class="text-xl font-bold">基本情報編集</p>
@@ -41,7 +41,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="p-2 w-1/2 mx-auto">
+                            <div class="p-2 md:w-1/2 mx-auto">
                                 <div>
                                     <label for="name" class="leading-7 text-sm text-gray-600">学年 ※必須</label>
                                     <select name="grade" id="grade">
@@ -54,7 +54,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="p-2 w-1/2 mx-auto">
+                            <div class="p-2 md:w-1/2 mx-auto">
                                 <div>
                                     <label for="name" class="leading-7 text-sm text-gray-600">大学名 ※必須</label>
                                     <input type="text" id="university" name="university"
@@ -62,7 +62,7 @@
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                             </div>
-                            <div class="p-2 w-1/2 mx-auto">
+                            <div class="p-2 md:w-1/2 mx-auto">
                                 <div>
                                     <label for="name" class="leading-7 text-sm text-gray-600">学部名 ※必須</label>
                                     <input type="text" id="department" name="department"
@@ -70,7 +70,7 @@
                                         class="w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                             </div>
-                            <div class="p-2 w-1/2 mx-auto">
+                            <div class="p-2 md:w-1/2 mx-auto">
                                 <div>
                                     <label for="name" class="leading-7 text-sm text-gray-600">学科名 ※必須</label>
                                     <input type="text" id="course" name="course" value="{{ $info->course }}"
@@ -78,7 +78,7 @@
                                         class="w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                             </div>
-                            <div class="p-2 w-1/2 mx-auto">
+                            <div class="p-2 md:w-1/2 mx-auto">
                                 <div>
                                     <label for="name" class="leading-7 text-sm text-gray-600">興味のある分野 ※必須</label>
                                     <input type="text" id="interest_area" name="interest_area"
@@ -86,7 +86,7 @@
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 </div>
                             </div>
-                            <div class="p-2 w-1/2 mx-auto">
+                            <div class="p-2 md:w-1/2 mx-auto">
                                 <div>
                                     <label for="name" class="leading-7 text-sm text-gray-600">自分の強み ※必須</label>
                                     <textarea type="text" id="strong_point" name="strong_point" required

@@ -1,15 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            ホーム
-        </h2>
+    
     </x-slot>
 
     <form method="POST" action="{{ url('mail') }}">
         @csrf
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-2">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="mt-2 w-1/2 text-center mx-auto">
                             <p class="text-xl font-bold">応募情報入力</p>
@@ -23,7 +21,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div class="flex align-center mb-4">
                                 <div class="pr-2">
                                     <label for="name" class="leading-7 text-sm text-gray-600">名前 ※必須</label>
@@ -45,35 +43,35 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">大学名 ※必須</label>
                                 <input type="text" id="university" name="university" required
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">学部名 ※必須</label>
                                 <input type="text" id="department" name="department" required
                                     class="w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">学科名 ※必須</label>
                                 <input type="text" id="course" name="course" required
                                     class="w-1/2 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">興味のある分野 ※必須</label>
                                 <input type="text" id="interest_area" name="interest_area" required
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
-                        <div class="p-2 w-1/2 mx-auto">
+                        <div class="p-2 md:w-1/2 mx-auto">
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">自分の強み ※必須</label>
                                 <textarea type="text" id="strong_point" name="strong_point" required
