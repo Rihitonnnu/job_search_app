@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\UserDetailInfo;
+use App\Models\UserInfo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
@@ -50,6 +50,6 @@ class User extends Authenticatable
     ];
 
     public function user_info(){
-        return $this->hasOne(UserDetailInfo::class);
+        return $this->hasOne(UserInfo::class);
     }
 }

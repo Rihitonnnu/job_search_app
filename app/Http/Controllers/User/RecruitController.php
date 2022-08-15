@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class RecruitController extends Controller
@@ -32,7 +33,16 @@ class RecruitController extends Controller
      */
     public function create()
     {
-        return view('user.recruit.create');
+        $user=User::with('user_info')->get();
+        $user_name=$user[0]->name;
+        $info=$user[0]->user_info;
+        if($info==null){
+            //フラッシュメッセージ
+            Session::flash('message','基本情報を登録してください。');
+            $status='error';
+            return view('user.dashboard',compact('status'));
+        }
+        return view('user.recruit.create',compact('info','user_name'));
     }
 
     /**
