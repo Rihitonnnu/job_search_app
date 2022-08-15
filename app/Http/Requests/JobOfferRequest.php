@@ -29,6 +29,7 @@ class JobOfferRequest extends FormRequest
             'job_title',
             'introduce',
             'languages'=>'required',
+            'thumbnail'=>'required',
         ];
     }
 
@@ -37,7 +38,8 @@ class JobOfferRequest extends FormRequest
         return [
             'course.required' => '学科を入力してください',
             'strong_area.required' => '自分の強みは必ず記入してください',
-            'languages.required'=>'開発環境を1つ以上選択してください。'
+            'languages.required'=>'開発環境を1つ以上選択してください。',
+            'thumbnail.required'=>'サムネイル画像をアップロードしてください。',
         ];
     }
 
