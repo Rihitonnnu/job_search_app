@@ -21,10 +21,10 @@
                                                 {{ $offer->job_title }}</h3>
                                         </div>
                                         @if ($offer->thumbnail != null)
-                                            <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                            <img class="h-80 rounded w-full object-cover object-center mb-6"
                                                 src="{{ asset('storage/' . $offer->thumbnail) }}" alt="content">
                                         @else
-                                            <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                            <img class="h-80 rounded w-full object-cover object-center mb-6"
                                                 src="https://dummyimage.com/720x400" alt="content">
                                         @endif
                                         <div class="mb-6">
