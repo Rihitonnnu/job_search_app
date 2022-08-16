@@ -1,9 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            募集一覧
-        </h2>
-    </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -46,8 +41,8 @@
                                                 @endforeach
                                             </div>
                                             <div class="pt-4 w-full">
-                                                <button onclick="location.href=' {{ route('user.recruit.create') }} '"
-                                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base">応募する</button>
+                                                <button onclick="location.href=' {{ route('user.recruit.show',['recruit'=>$offer->id]) }} '"
+                                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base">詳細を表示</button>
                                             </div>
                                         </div>
                                     </div>

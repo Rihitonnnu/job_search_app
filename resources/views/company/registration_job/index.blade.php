@@ -13,7 +13,8 @@
                         <div class="container px-2 mx-auto">
                             <div class="md:flex md:flex-wrap md:justify-between w-full">
                                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0 md:ml-4">
-                                    <h1 class="sm:text-3xl md:text-left text-center text-2xl font-medium title-font mb-2 text-gray-900">
+                                    <h1
+                                        class="sm:text-3xl md:text-left text-center text-2xl font-medium title-font mb-2 text-gray-900">
                                         募集一覧</h1>
                                 </div>
                                 <div class="p-2">
@@ -26,16 +27,17 @@
                             </div>
                             <div class="flex flex-wrap">
                                 @foreach ($offers as $offer)
-                                    <div class="p-4">
+                                    <div class="p-4 md:w-1/3">
                                         <div class="bg-gray-100 px-6 py-4 rounded-lg">
                                             @if ($offer->thumbnail != null)
-                                                <img class="h-40 rounded w-full object-cover object-center mb-6"
+                                                <img class="h-0 rounded w-full object-cover object-center mb-6"
                                                     src="{{ asset('storage/' . $offer->thumbnail) }}" alt="content">
                                             @else
                                                 <img class="h-40 rounded w-full object-cover object-center mb-6"
                                                     src="https://dummyimage.com/720x400" alt="content">
                                             @endif
-                                            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font md:text-left">
+                                            <h3
+                                                class="tracking-widest text-indigo-500 text-xs font-medium title-font md:text-left">
                                                 {{ $offer->job_title }}</h3>
                                             <h2 class="text-lg text-gray-900 font-medium title-font mb-4 md:text-left">
                                                 {{ $offer->headline }}
@@ -57,7 +59,8 @@
                                                         class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-md md:text-lg">編集する</button>
                                                 </div>
                                                 <form
-                                                    action="{{ route('company.registration.destroy',['registration'=>$offer->id])}}" method="POST">
+                                                    action="{{ route('company.registration.destroy', ['registration' => $offer->id]) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <div class="p-2">

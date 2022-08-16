@@ -33,9 +33,10 @@ class RecruitController extends Controller
      */
     public function create()
     {
+        $id=Auth::id();$id-=1;
         $user=User::with('user_info')->get();
-        $user_name=$user[0]->name;
-        $info=$user[0]->user_info;
+        $user_name=$user[$id]->name;
+        $info=$user[$id]->user_info;
         if($info==null){
             //フラッシュメッセージ
             Session::flash('message','基本情報を登録してください。');
@@ -64,7 +65,11 @@ class RecruitController extends Controller
      */
     public function show($id)
     {
-        //
+        $offers=CompanyOffer::with('company_language')->get();
+        $id-=1;
+        $offer=$offers[$id];
+        $languages=['ruby','javascript','java','python','c','php'];
+        return view('user.recruit.show',compact(['offer','languages']));
     }
 
     /**
