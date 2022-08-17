@@ -18,7 +18,7 @@ class CompanySeeder extends Seeder
     {
         //
         DB::table('companies')->insert([
-            'company_name'=>'company',
+            'company_name'=>'株式会社絶望',
             'email'=>'company@company.com',
             'password'=>Hash::make('password123'),
         ]);

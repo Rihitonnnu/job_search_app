@@ -21,7 +21,7 @@ class CompanyOffer extends Model
     ];
 
     public function company(){
-        return $this->belongsToMany(Company::class);
+        return $this->belongsTo(Company::class,'company_id');
     }
 
     public function company_language(){

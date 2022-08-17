@@ -21,7 +21,8 @@ class RecruitController extends Controller
      */
     public function index()
     {
-        $offers=CompanyOffer::with('company_language')->get();
+        $offers=CompanyOffer::with('company_language','company')->get();
+        // dd($offers[1]->company->company_name);
         $languages=['ruby','javascript','java','python','c','php'];
         return view('user.recruit.index',compact(['offers','languages']));
     }
