@@ -21,6 +21,7 @@ class CompanyOfferSeeder extends Seeder
             'job_title'=>'職種名',
             'introduce'=>'こんにちは！求人募集中です！',
             'thumbnail'=>'',
+            'deadline'=>'2022-08-17 21:52:57',
         ]);
     }
 }

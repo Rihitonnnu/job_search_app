@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
 use App\Models\CompanyLanguage;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CompanyOffer extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable=[
         'company_id',
@@ -18,6 +19,8 @@ class CompanyOffer extends Model
         'job_title',
         'introduce',
         'thumbnail',
+        'application_period',
+        'deadline',
     ];
 
     public function company(){

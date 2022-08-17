@@ -22,8 +22,13 @@ class RecruitController extends Controller
     public function index()
     {
         $offers=CompanyOffer::with('language','company')->get();
-        // dd($offers[1]->company->company_name);
-        // dd($offers);
+
+        //それぞれの募集の期限を確認し期限切れの場合はソフトデリートする
+        foreach($offers as $offer){
+            if(now()>$offer->deadline){
+                $offer->delete();
+            }
+        }
         $languages=['ruby','javascript','java','python','c','php'];
         return view('user.recruit.index',compact(['offers','languages']));
     }
@@ -67,10 +72,18 @@ class RecruitController extends Controller
      */
     public function show($id)
     {
-        $offers=CompanyOffer::with('company_language')->get();
-        $id-=1;
-        $offer=$offers[$id];
+        $offer=CompanyOffer::findOrFail($id);
+        $offer_languages=CompanyOffer::find($id)->language;
         $languages=['ruby','javascript','java','python','c','php'];
+
+        //開発言語を配列としてviewファイルに渡すための処理
+        $cnt=0;
+        foreach($languages as $language){
+            if(!$offer_languages[$language]){
+                unset($languages[$cnt]);
+            }
+            $cnt++;
+        }
         return view('user.recruit.show',compact(['offer','languages']));
     }
 

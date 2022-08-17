@@ -30,6 +30,7 @@ class JobOfferRequest extends FormRequest
             'introduce',
             'languages'=>'required',
             'thumbnail'=>'required',
+            'application_period'=>'required',
         ];
     }
 
@@ -40,6 +41,7 @@ class JobOfferRequest extends FormRequest
             'strong_area.required' => '自分の強みは必ず記入してください',
             'languages.required'=>'開発環境を1つ以上選択してください。',
             'thumbnail.required'=>'サムネイル画像をアップロードしてください。',
+            'application_period.required'=>'募集期間を選択してください',
         ];
     }
 
@@ -50,6 +52,7 @@ class JobOfferRequest extends FormRequest
             'job_title'=>"職種名",
             'introduce'=>"紹介文",
             'languages'=>'開発環境',
+            'application_period'=>'募集期間',
         ];
     }
 }

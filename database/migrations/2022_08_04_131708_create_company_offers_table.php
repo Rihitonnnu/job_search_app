@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('job_title');
             $table->text('introduce');
             $table->string('thumbnail')->nullable();
+            $table->timestamp('deadline');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

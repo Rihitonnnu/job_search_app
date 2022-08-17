@@ -28,7 +28,7 @@ class RegistrationJobOfferController extends Controller
     {
         //自社の募集内容のみを取得
         $offers = Company::with(['offers.language'])->get();
-        $myoffers=$offers[Auth::id()-1]->offers;
+        $myoffers = $offers[Auth::id() - 1]->offers;
         // dd($myoffers);
         $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
         return view('company.registration_job.index', compact(['myoffers', 'languages']));
@@ -62,12 +62,17 @@ class RegistrationJobOfferController extends Controller
         //データ更新
         try {
             DB::transaction(function () use ($request, $thumbnail_path) {
+                //募集締切時刻設定
+                $now = Carbon::now();
+                $deadline = $now->addDay($request->application_period);
+                
                 $offers = CompanyOffer::create([
                     'company_id' => Auth::id(),
                     'headline' => $request->headline,
                     'job_title' => $request->job_title,
                     'introduce' => $request->introduce,
                     'thumbnail' => basename($thumbnail_path),
+                    'deadline'=>$deadline,
                 ]);
 
                 //言語のtrue or falseのための初期化

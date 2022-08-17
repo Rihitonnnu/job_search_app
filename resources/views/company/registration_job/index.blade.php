@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-3 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-2 md:mx-0 md:py-6 md:px-2">
-                <div class="py-6 bg-white border-b border-gray-200 w-full">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-2 md:mx-0 md:py-6 md:px-5">
+                <div class="py-6 bg-white w-full">
                     <section class="text-gray-600 body-font">
                         <div class="mx-auto">
                             <div class="md:flex md:flex-wrap md:justify-between w-full">
