@@ -28,8 +28,8 @@ class RegistrationJobOfferController extends Controller
     {
         //自社の募集内容のみを取得
         $offers = Company::with(['offers.language'])->get();
+        // dd($offers);
         $myoffers = $offers[Auth::id() - 1]->offers;
-        // dd($myoffers);
         $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
         return view('company.registration_job.index', compact(['myoffers', 'languages']));
     }
@@ -129,13 +129,14 @@ class RegistrationJobOfferController extends Controller
     public function edit($id)
     {
         try {
-            //リレーション先のcompany_languageを含めて取得
-            $info = CompanyOffer::findOrFail($id)::with('language')->get();
+            //リレーション先のlanguageを含めて取得
+            $offer=CompanyOffer::findOrFail($id);
+            $language=$offer->language;
+            // dd($offer->id);
         } catch (Throwable $e) {
-            $info = null; //ここの見つからない場合の処理も考える必要がある？
+            $offer = null; //ここの見つからない場合の処理も考える必要がある？
         }
-        $id--;
-        return view('company.registration_job.edit', compact(['info', 'id']));
+        return view('company.registration_job.edit', compact(['offer', 'language']));
     }
 
     /**
@@ -147,15 +148,14 @@ class RegistrationJobOfferController extends Controller
      */
     public function update(JobOfferRequest $request, $id)
     {
-        $id -= 1;
-        $offers = CompanyOffer::findOrFail(Auth::id())->with('language')->get();
-        $offer = $offers[$id];
+        $offer = CompanyOffer::findOrFail($id);
+        $offer_language=$offer->language;
 
         //thumbnailの保存
         $filename = $request->file('thumbnail')->store('');
         $thumbnail_path = $request->file('thumbnail')->storeAs('public/', $filename);
         try {
-            DB::transaction(function () use ($request, $thumbnail_path, $offer) {
+            DB::transaction(function () use ($request, $thumbnail_path, $offer,$offer_language) {
                 $offer->headline = $request->headline;
                 $offer->job_title = $request->job_title;
                 $offer->introduce = $request->introduce;
@@ -176,16 +176,16 @@ class RegistrationJobOfferController extends Controller
                 }
 
                 //開発言語情報の更新処理
-                $offer->company_language->ruby = $languages['ruby'];
-                $offer->company_language->javascript = $languages['javascript'];
-                $offer->company_language->java = $languages['java'];
-                $offer->company_language->python = $languages['python'];
-                $offer->company_language->c = $languages['c'];
-                $offer->company_language->php = $languages['php'];
+                $offer_language->ruby = $languages['ruby'];
+                $offer_language->javascript = $languages['javascript'];
+                $offer_language->java = $languages['java'];
+                $offer_language->python = $languages['python'];
+                $offer_language->c = $languages['c'];
+                $offer_language->php = $languages['php'];
 
                 //変更保存
                 $offer->save();
-                $offer->company_language->save();
+                $offer_language->save();
             }, 2);
         } catch (Throwable $e) {
             Log::error($e);
@@ -205,9 +205,7 @@ class RegistrationJobOfferController extends Controller
      */
     public function destroy($id)
     {
-        $id -= 1;
-        $offers = CompanyOffer::findOrFail(Auth::id())->with('language')->get();
-        $offer = $offers[$id];
+        $offer = CompanyOffer::findOrFail($id);
         $offer->delete();
         //フラッシュメッセージ
         Session::flash('message', '削除が完了しました。');
