@@ -39,14 +39,13 @@
                                         </div>
                                         <div>
                                             <h1 class="md:text-xl sm:text-3xl font-bold md:mb-2 font-bold">開発環境</p>
-                                            <div class="flex flex-wrap w-full">
-                                                @foreach ($languages as $language)
-                                                    @if ($offer->company_language->$language)
-                                                        <p class="md:text-lg leading-relaxed text-base mr-4">●{{ $language }}
+                                                <div class="flex flex-wrap w-full">
+                                                    @foreach ($languages as $language)
+                                                        <p class="md:text-lg leading-relaxed text-base mr-4">
+                                                            ●{{ $language }}
                                                         </p>
-                                                    @endif
-                                                @endforeach
-                                            </div>
+                                                    @endforeach
+                                                </div>
                                         </div>
                                         <div class="pt-4 w-full">
                                             <button onclick="location.href=' {{ route('user.recruit.create') }} '"
