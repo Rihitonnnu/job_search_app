@@ -39,7 +39,7 @@
                                             <p class="text-md text-gray-900 font-medium">開発環境</p>
                                             <div class="flex flex-wrap w-full">
                                                 @foreach ($languages as $language)
-                                                    @if ($offer->company_language->$language)
+                                                    @if ($offer->language->$language)
                                                         <p class="leading-relaxed text-base mr-2">{{ $language }}
                                                         </p>
                                                     @endif

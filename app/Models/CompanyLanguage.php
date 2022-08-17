@@ -20,7 +20,7 @@ class CompanyLanguage extends Model
         'php',
     ];
 
-    public function company_offer(){
-        return $this->belongsTo(CompanyOffer::class);
+    public function offer(){
+        return $this->belongsTo(CompanyOffer::class,'company_offer_id');
     }
 }

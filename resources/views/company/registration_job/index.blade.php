@@ -15,7 +15,7 @@
                                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0 md:ml-4">
                                     <h1
                                         class="sm:text-3xl md:text-left text-center text-2xl font-medium title-font mb-2 text-gray-900">
-                                        募集一覧</h1>
+                                        現在の募集一覧</h1>
                                 </div>
                                 <div class="p-2 mb-3">
                                     <button onclick="location.href='{{ route('company.registration.create') }}'"
@@ -26,8 +26,8 @@
                                 <x-flash-message status='info' />
                             </div>
                             <div class="md:flex md:flex-wrap md:w-full">
-                                @foreach ($offers as $offer)
-                                    <div class="md:w-96 w-full mb-3 md:m-2">
+                                @foreach ($myoffers as $offer)
+                                    <div class="md:w-96 w-11/12 mb-3 md:m-2 mx-auto">
                                         <div class="bg-gray-100 px-4 py-4 rounded-lg">
                                             @if ($offer->thumbnail != null)
                                                 <img class="h-40 rounded w-full object-cover object-center mb-6"
@@ -46,7 +46,7 @@
                                             <p class="leading-relaxed text-base md:text-left">開発環境</p>
                                             <div class="flex md:flex-wrap w-full">
                                                 @foreach ($languages as $language)
-                                                    @if ($offer->company_language->$language)
+                                                    @if ($offer->language->$language)
                                                         <p class="leading-relaxed text-base mr-2">{{ $language }}
                                                         </p>
                                                     @endif

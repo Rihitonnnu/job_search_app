@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Throwable;
+use Carbon\Carbon;
 
 class RegistrationJobOfferController extends Controller
 {
@@ -25,9 +26,12 @@ class RegistrationJobOfferController extends Controller
 
     public function index()
     {
-        $offers = CompanyOffer::with('company_language')->get();
+        //自社の募集内容のみを取得
+        $offers = Company::with(['offers.language'])->get();
+        $myoffers=$offers[Auth::id()-1]->offers;
+        // dd($myoffers);
         $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
-        return view('company.registration_job.index', compact(['offers', 'languages']));
+        return view('company.registration_job.index', compact(['myoffers', 'languages']));
     }
     // $messageKey,$flashMessage
 
@@ -121,12 +125,11 @@ class RegistrationJobOfferController extends Controller
     {
         try {
             //リレーション先のcompany_languageを含めて取得
-            $info = CompanyOffer::findOrFail($id)::with('company_language')->get();
+            $info = CompanyOffer::findOrFail($id)::with('language')->get();
         } catch (Throwable $e) {
             $info = null; //ここの見つからない場合の処理も考える必要がある？
         }
         $id--;
-        // dd($info[0]->company_language->ruby);
         return view('company.registration_job.edit', compact(['info', 'id']));
     }
 
@@ -140,7 +143,7 @@ class RegistrationJobOfferController extends Controller
     public function update(JobOfferRequest $request, $id)
     {
         $id -= 1;
-        $offers = CompanyOffer::findOrFail(Auth::id())->with('company_language')->get();
+        $offers = CompanyOffer::findOrFail(Auth::id())->with('language')->get();
         $offer = $offers[$id];
 
         //thumbnailの保存
@@ -166,6 +169,8 @@ class RegistrationJobOfferController extends Controller
                 foreach ($request->languages as $language) {
                     $languages[$language] = 1;
                 }
+
+                //開発言語情報の更新処理
                 $offer->company_language->ruby = $languages['ruby'];
                 $offer->company_language->javascript = $languages['javascript'];
                 $offer->company_language->java = $languages['java'];
@@ -196,7 +201,7 @@ class RegistrationJobOfferController extends Controller
     public function destroy($id)
     {
         $id -= 1;
-        $offers = CompanyOffer::findOrFail(Auth::id())->with('company_language')->get();
+        $offers = CompanyOffer::findOrFail(Auth::id())->with('language')->get();
         $offer = $offers[$id];
         $offer->delete();
         //フラッシュメッセージ

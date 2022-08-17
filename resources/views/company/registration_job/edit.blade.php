@@ -46,7 +46,7 @@
                                 <label for="name" class="leading-7 text-sm text-gray-600">開発環境 ※必須</label>
                                 <div class="flex flex-wrap">
                                     <div class="mr-5">
-                                        @if ($info[$id]->company_language->ruby)
+                                        @if ($info[$id]->language->ruby)
                                             <input type="checkbox" id="languages" name="languages[]" value=ruby checked
                                                 class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">Ruby
                                         @else
@@ -56,7 +56,7 @@
                                     </div>
 
                                     <div class="mr-5">
-                                        @if ($info[$id]->company_language->javascript)
+                                        @if ($info[$id]->language->javascript)
                                             <input type="checkbox" id="languages" name="languages[]" value=javascript
                                                 checked
                                                 class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">JavaScript
@@ -67,7 +67,7 @@
                                     </div>
 
                                     <div class="mr-5">
-                                        @if ($info[$id]->company_language->java)
+                                        @if ($info[$id]->language->java)
                                             <input type="checkbox" id="languages" name="languages[]" value=java checked
                                                 class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">Java
                                         @else
@@ -76,7 +76,7 @@
                                         @endif
                                     </div>
                                     <div class="mr-5">
-                                        @if ($info[$id]->company_language->python)
+                                        @if ($info[$id]->language->python)
                                             <input type="checkbox" id="languages" name="languages[]" value=python
                                                 checked
                                                 class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">Python
@@ -86,7 +86,7 @@
                                         @endif
                                     </div>
                                     <div class="mr-5">
-                                        @if ($info[$id]->company_language->c)
+                                        @if ($info[$id]->language->c)
                                             <input type="checkbox" id="languages" name="languages[]" value=c checked
                                                 class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">C
                                         @else
@@ -95,7 +95,7 @@
                                         @endif
                                     </div>
                                     <div class="mr-5">
-                                        @if ($info[$id]->company_language->php)
+                                        @if ($info[$id]->language->php)
                                             <input type="checkbox" id="languages" name="languages[]" value=php checked
                                                 class="w-5 h-5 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 leading-8 transition-colors duration-200 ease-in-out">PHP
                                         @else

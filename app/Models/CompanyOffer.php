@@ -24,7 +24,7 @@ class CompanyOffer extends Model
         return $this->belongsTo(Company::class,'company_id');
     }
 
-    public function company_language(){
+    public function language(){
         return $this->hasOne(CompanyLanguage::class);
     }
 }
