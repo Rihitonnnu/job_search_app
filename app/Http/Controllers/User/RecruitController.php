@@ -19,7 +19,7 @@ class RecruitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $offers=CompanyOffer::with('language','company')->get();
 
@@ -73,7 +73,7 @@ class RecruitController extends Controller
     public function show($id)
     {
         $offer=CompanyOffer::findOrFail($id);
-        $offer_languages=CompanyOffer::find($id)->language;
+        $offer_languages=$offer->language;
         $languages=['ruby','javascript','java','python','c','php'];
 
         //開発言語を配列としてviewファイルに渡すための処理

@@ -23,6 +23,9 @@
                     <x-nav-link :href="route('user.info.edit',['info'=>Auth::id()])" :active="request()->routeIs('user.recruit.edit')">
                         基本情報編集
                     </x-nav-link>
+                    <x-nav-link :href="route('user.info.edit',['info'=>Auth::id()])" :active="request()->routeIs('user.recruit.edit')">
+                        シート情報登録/編集
+                    </x-nav-link>
                 </div>
             </div>
 
