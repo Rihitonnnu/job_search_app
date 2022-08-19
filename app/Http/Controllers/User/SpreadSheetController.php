@@ -54,6 +54,7 @@ class SpreadSheetController extends Controller
             Log::error($e);
             throw $e;
         }
+        $user->save();
         Session::flash('message','シートの登録が完了しました。');
         return to_route('user.dashboard');
     }

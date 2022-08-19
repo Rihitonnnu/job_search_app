@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Google\Service\ServiceControl\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,15 +16,18 @@ class SpreadSheet extends Model
         // スプレッドシートを操作するGoogleClientインスタンスの生成（後述のファンクション）
         $sheets = SpreadSheet::instance();
 
+        //登録されたurlを取り出し文字分割してidのみを抽出
+        $url=User::findOrFail(\Illuminate\Support\Facades\Auth::id())->sheet_url;
+        $split_url=explode("/",$url,7);
+
         // データを格納したい SpreadSheet のURLが
         // https://docs.google.com/spreadsheets/d/×××××××××××××××××××/edit#gid=0
         // である場合、××××××××××××××××××× の部分を以下に記入する
-        $sheet_id = '1dhMkdghtacabHGE4J8CHpqBISDgDLSCJdQGgneOxcf8';
+        $sheet_id = $split_url[5];
         $range = 'A1:A';
         $response = $sheets->spreadsheets_values->get($sheet_id, $range);
+        
         // 格納する行の計算
-        // dd('a');
-        // $count = count($response->values);
         $count = 1;$row=$count;
         if ($response->getValues() == null) {
             $values = new \Google_Service_Sheets_ValueRange();
