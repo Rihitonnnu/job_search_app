@@ -7,6 +7,11 @@ use App\Models\CompanyOffer;
 use Illuminate\Http\Request;
 use App\Models\SpreadSheet;
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Throwable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 
 class SpreadSheetController extends Controller
@@ -28,7 +33,7 @@ class SpreadSheetController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.sheet.create');
     }
 
     /**
@@ -39,7 +44,18 @@ class SpreadSheetController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $user=User::findOrFail(Auth::id());
+        // dd($user);
+        try{
+            DB::transaction(function () use($request,$user) {
+                $user->sheet_url=$request->name;
+            });
+        }catch(Throwable $e){
+            Log::error($e);
+            throw $e;
+        }
+        Session::flash('message','シートの登録が完了しました。');
+        return to_route('user.dashboard');
     }
     
 

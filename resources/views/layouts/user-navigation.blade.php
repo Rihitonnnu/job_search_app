@@ -20,11 +20,11 @@
                     <x-nav-link :href="route('user.recruit.index')" :active="request()->routeIs('user.recruit.index')">
                         募集企業を探そう
                     </x-nav-link>
-                    <x-nav-link :href="route('user.info.edit',['info'=>Auth::id()])" :active="request()->routeIs('user.recruit.edit')">
+                    <x-nav-link :href="route('user.info.edit',['info'=>Auth::id()])" :active="request()->routeIs('user.info.edit')">
                         基本情報編集
                     </x-nav-link>
-                    <x-nav-link :href="route('user.info.edit',['info'=>Auth::id()])" :active="request()->routeIs('user.recruit.edit')">
-                        シート情報登録/編集
+                    <x-nav-link :href="route('user.sheet.create')" :active="request()->routeIs('user.sheet.create')">
+                        シート登録
                     </x-nav-link>
                 </div>
             </div>
