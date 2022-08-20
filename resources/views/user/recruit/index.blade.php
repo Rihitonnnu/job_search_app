@@ -48,16 +48,16 @@
                                                 @endforeach
                                             </div>
                                             <div class="flex pt-4 justify-around md:w-11/12 md:mx-auto">
-                                                <div class="pt-4 w-full">
+                                                <div class="md:pt-4 md:w-full w-10/12">
                                                     <button
                                                         onclick="location.href='{{ route('user.sheet.edit', ['sheet' => $offer->id]) }}'"
-                                                        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base">シートに追加</button>
+                                                        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 md:px-8 px-6 focus:outline-none hover:bg-indigo-600 rounded text-base">シートに追加</button>
                                                 </div>
 
-                                                <div class="pt-4 w-full">
+                                                <div class="md:pt-4 md:w-full w-10/12">
                                                     <button
                                                         onclick="location.href=' {{ route('user.recruit.show', ['recruit' => $offer->id]) }} '"
-                                                        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-base">詳細を表示</button>
+                                                        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 md:px-8 px-6 focus:outline-none hover:bg-indigo-600 rounded text-base">詳細を表示</button>
                                                 </div>
                                             </div>
                                         </div>

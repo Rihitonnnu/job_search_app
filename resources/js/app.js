@@ -1,4 +1,6 @@
 import './bootstrap';
+import './user_hamburger';
+import './company_hamburger';
 
 // import Alpine from 'alpinejs';
 
