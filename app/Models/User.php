@@ -31,6 +31,8 @@ class User extends Authenticatable
         'sheet_url',
     ];
 
+    protected $guarded=['id'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -52,5 +54,9 @@ class User extends Authenticatable
 
     public function user_info(){
         return $this->hasOne(UserInfo::class);
+    }
+
+    public function offers(){
+        return $this->belongsToMany(CompanyOffer::class);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\RecruitMailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\SpreadSheetController;
+use App\Http\Controllers\User\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,6 @@ Route::get('/mail', [RecruitMailController::class,'index'])->middleware(['auth:u
 Route::post('/mail', [RecruitMailController::class,'send'])->middleware(['auth:users']);
 
 Route::resource('sheet',SpreadSheetController::class)->middleware(['auth:users']);
+
+Route::get('application/{id}',[ApplicationController::class,'registration'])->middleware(['auth:users'])->name('application');
 require __DIR__.'/auth.php';

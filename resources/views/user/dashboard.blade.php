@@ -9,7 +9,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 md:flex text-center">
                         <div class="mt-2">
-                            <p>あなたの就活情報を登録してみましょう！</p>
+                            <p>あなたの基本情報を登録してみましょう！</p>
                         </div>
                         <div class="mt-2 md:ml-4 md:mt-0">
                             <button onclick="location.href=' {{ route('user.info.create') }} '"

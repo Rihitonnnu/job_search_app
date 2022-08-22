@@ -39,4 +39,8 @@ class Company extends Authenticatable
     public function offers(){
         return $this->hasMany(CompanyOffer::class);
     }
+
+    public function applicants(){
+        return $this->hasMany(CompanyApplicants::class);
+    }
 }

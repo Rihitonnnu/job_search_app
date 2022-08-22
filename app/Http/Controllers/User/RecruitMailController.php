@@ -15,7 +15,6 @@ class RecruitMailController extends Controller
 {
     public function index()
     {
-        // dd('a');
         return view('user.error');
     }
 

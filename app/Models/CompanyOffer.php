@@ -30,4 +30,8 @@ class CompanyOffer extends Model
     public function language(){
         return $this->hasOne(CompanyLanguage::class);
     }
+
+    public function users(){
+        return $this->belongsToMany(User::class)->withPivot('registration');
+    }
 }

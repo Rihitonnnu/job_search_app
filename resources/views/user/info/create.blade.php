@@ -28,12 +28,12 @@
                             <div>
                                 <label for="name" class="leading-7 text-sm text-gray-600">学年 ※必須</label>
                                 <select name="grade" id="grade">
-                                    <option value="b_1">大学1年生</option>
-                                    <option value="b_2">大学2年生</option>
-                                    <option value="b_3">大学3年生</option>
-                                    <option value="b_4">大学4年生</option>
-                                    <option value="d_1">大学院1年生</option>
-                                    <option value="d_2">大学院2年生</option>
+                                    <option value="大学1年生">大学1年生</option>
+                                    <option value="大学2年生">大学2年生</option>
+                                    <option value="大学3年生">大学3年生</option>
+                                    <option value="大学4年生">大学4年生</option>
+                                    <option value="大学院1年生">大学院1年生</option>
+                                    <option value="大学院2年生">大学院2年生</option>
                                 </select>
                             </div>
                         </div>

@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'registration'=>false,
+            'registration'=>false,//ユーザー基本情報を登録しているかどうかを判断
         ]);
 
         // dd($user);
