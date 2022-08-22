@@ -40,7 +40,7 @@ class ApplicationController extends Controller
         $offer->users()->syncWithoutDetaching([
             Auth::id()=>['registration'=>true],
         ]);
-        
+
         try {
             //応募したユーザの情報の登録と保存処理
             DB::transaction(function ()use($company_id,$offer_headline,$user_name,$user_info) {

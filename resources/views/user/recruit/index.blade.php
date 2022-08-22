@@ -11,23 +11,10 @@
                             <div class="flex flex-wrap w-full md:mb-20 justify-between">
                                 <div class="lg:w-1/2 w-full mb-6 md:ml-3 lg:mb-0">
                                     <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
-                                        募集一覧</h1>
+                                        求人一覧</h1>
                                     <div class="h-1 w-20 bg-indigo-500 rounded"></div>
                                 </div>
                             </div>
-                            @php
-                                // $user_info = $offers[0]->users->where('id', \Illuminate\Support\Facades\Auth::id())->toArray();
-                                // // dd($user_info);
-                                // if ($user_info == null) {
-                                //     $is_application = null;
-                                // } else {
-                                //     // $id = $user_info[0]['id'];
-                                //     // // dd($id);
-                                //     // dd($offers[2]->users[0]);
-                                //     $is_application = $offers[0]->users[0]->pivot->registration;
-                                // }
-                                // dd($is_application);
-                            @endphp
                             <div class="md:flex md:flex-wrap">
                                 @foreach ($offers as $offer)
                                     @php
@@ -38,13 +25,6 @@
                                         } else {
                                             $is_application = $offer->users[0]->pivot->registration;
                                         }
-                                        // dd($is_application);
-                                        //応募しているかしていないかを判断するため変数
-                                        // if ($key[0] != 0) {
-                                        //     $is_application = $offer->users[$key[0]]->pivot->registration;
-                                        // } else {
-                                        //     $is_application = 1;
-                                        // }
                                     @endphp
                                     @if ($is_application == null)
                                         <div class="py-2 md:w-96 w-full md:m-2 mx-auto">

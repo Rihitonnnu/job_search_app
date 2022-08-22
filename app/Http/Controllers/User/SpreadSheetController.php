@@ -82,6 +82,11 @@ class SpreadSheetController extends Controller
         $offer=CompanyOffer::findOrfail($id);
         $company=$offer->company;
         $spread_sheet = new SpreadSheet();
+        $url=User::find(Auth::id())->url;
+        if($url==null){
+            Session::flash('message','シートのurlを登録して下さい。');
+            return to_route('user.sheet.create');
+        }
 
         // スプレッドシートに格納するテストデータです
         $insert_data = [
