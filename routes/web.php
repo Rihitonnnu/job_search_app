@@ -31,8 +31,8 @@ Route::resource('recruit',RecruitController::class)
 
 Route::get('/dashboard',[DashboardController::class,'show'])->middleware(['auth:users'])->name('dashboard');
 
-Route::get('/mail', [RecruitMailController::class,'index'])->middleware(['auth:users']);
-Route::post('/mail', [RecruitMailController::class,'send'])->middleware(['auth:users']);
+Route::get('/mail/error', [RecruitMailController::class,'index'])->middleware(['auth:users']);
+Route::get('/mail', [RecruitMailController::class,'send'])->middleware(['auth:users']);
 
 Route::resource('sheet',SpreadSheetController::class)->middleware(['auth:users']);
 

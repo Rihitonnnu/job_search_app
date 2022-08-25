@@ -21,7 +21,6 @@ class ApplicationController extends Controller
     {
         $company_id=CompanyOffer::findOrFail($id)->company->id;
 
-        
         //ユーザーが応募した募集内容
         $offer_headline = CompanyOffer::findOrFail($id)->headline;
         
@@ -60,7 +59,7 @@ class ApplicationController extends Controller
             Log::error($e);
             throw $e;
         }
-        Session::flash('message','応募が完了しました。');
-        return to_route('user.dashboard');
+        // return to_route('user.dashboard');
+        return redirect('/mail');
     }
 }

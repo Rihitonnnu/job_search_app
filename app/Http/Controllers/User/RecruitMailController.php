@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use App\Jobs\SendMail;
+use Illuminate\Support\Facades\Auth;
+
 
 class RecruitMailController extends Controller
 {
@@ -20,28 +22,10 @@ class RecruitMailController extends Controller
 
     public function send(Request $request)
     {   
-        $rules = [
-            'name'=>'required',
-            'university'=>'required|max:50',
-            'department'=>'required',
-            'course'=>'required',
-            'interest_area'=>'required|max:50',
-            'strong_area'=>'max:500',
-        ];
+        //応募した人のデータ取得
+        $data=User::find(Auth::id());
 
-        $messages = [
-            'course.required'=>'学科を入力してください',
-            'strong_area.required'=>'自分の強みは必ず記入してください',
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if($validator->fails()) {
-            return redirect('/mail')
-                ->withErrors($validator)
-                ->withInput();
-        }
-        $data = $validator->validate();
-
+        //メール送信処理
         SendMail::dispatch($data);
 
         //フラッシュメッセージ
