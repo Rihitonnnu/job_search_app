@@ -65,14 +65,14 @@ class RegistrationJobOfferController extends Controller
                 //募集締切時刻設定
                 $now = Carbon::now();
                 $deadline = $now->addDay($request->application_period);
-                
+
                 $offers = CompanyOffer::create([
                     'company_id' => Auth::id(),
                     'headline' => $request->headline,
                     'job_title' => $request->job_title,
                     'introduce' => $request->introduce,
                     'thumbnail' => basename($thumbnail_path),
-                    'deadline'=>$deadline,
+                    'deadline' => $deadline,
                 ]);
 
                 //言語のtrue or falseのための初期化
@@ -130,8 +130,8 @@ class RegistrationJobOfferController extends Controller
     {
         try {
             //リレーション先のlanguageを含めて取得
-            $offer=CompanyOffer::findOrFail($id);
-            $language=$offer->language;
+            $offer = CompanyOffer::findOrFail($id);
+            $language = $offer->language;
             // dd($offer->id);
         } catch (Throwable $e) {
             $offer = null; //ここの見つからない場合の処理も考える必要がある？
@@ -149,17 +149,24 @@ class RegistrationJobOfferController extends Controller
     public function update(JobOfferRequest $request, $id)
     {
         $offer = CompanyOffer::findOrFail($id);
-        $offer_language=$offer->language;
+        $offer_language = $offer->language;
+
 
         //thumbnailの保存
         $filename = $request->file('thumbnail')->store('');
         $thumbnail_path = $request->file('thumbnail')->storeAs('public/', $filename);
         try {
-            DB::transaction(function () use ($request, $thumbnail_path, $offer,$offer_language) {
+            DB::transaction(function () use ($request, $thumbnail_path, $offer, $offer_language) {
+                //募集締切時刻設定
+                $now = Carbon::now();
+                $deadline = $now->addDay($request->application_period);
+
                 $offer->headline = $request->headline;
                 $offer->job_title = $request->job_title;
                 $offer->introduce = $request->introduce;
                 $offer->thumbnail = basename($thumbnail_path);
+                $offer->deadline=$deadline;
+                
                 //言語のtrue or falseのための初期化
                 $languages = [
                     "ruby" => 0,

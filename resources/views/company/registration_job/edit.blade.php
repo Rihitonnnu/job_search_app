@@ -125,6 +125,17 @@
                             </div>
                         </div>
 
+                        <div class="p-2 md:w-1/2 mx-auto">
+                            <div>
+                                <label for="name" class="leading-7 text-sm text-gray-600">募集期間 ※必須</label>
+                                <select name="application_period" id="application_period">
+                                    <option value="7">1週間</option>
+                                    <option value="14">2週間</option>
+                                    <option value="31">1ヶ月</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="p-2 w-full">
                             <button
                                 class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">更新する</button>
