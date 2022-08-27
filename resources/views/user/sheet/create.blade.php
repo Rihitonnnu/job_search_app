@@ -1,5 +1,5 @@
 <x-app-layout>
-    <<div class="text-center m-4">
+    <div class="text-center m-4">
         <x-flash-message status='info' />
     </div>
     <div class="py-12">

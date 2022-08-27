@@ -28,7 +28,6 @@ class RegistrationJobOfferController extends Controller
     {
         //自社の募集内容のみを取得
         $offers = Company::with(['offers.language'])->get();
-        // dd($offers);
         $myoffers = $offers[Auth::id() - 1]->offers;
         $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
         return view('company.registration_job.index', compact(['myoffers', 'languages']));
@@ -132,7 +131,6 @@ class RegistrationJobOfferController extends Controller
             //リレーション先のlanguageを含めて取得
             $offer = CompanyOffer::findOrFail($id);
             $language = $offer->language;
-            // dd($offer->id);
         } catch (Throwable $e) {
             $offer = null; //ここの見つからない場合の処理も考える必要がある？
         }
@@ -151,7 +149,6 @@ class RegistrationJobOfferController extends Controller
         $offer = CompanyOffer::findOrFail($id);
         $offer_language = $offer->language;
 
-
         //thumbnailの保存
         $filename = $request->file('thumbnail')->store('');
         $thumbnail_path = $request->file('thumbnail')->storeAs('public/', $filename);
@@ -165,8 +162,8 @@ class RegistrationJobOfferController extends Controller
                 $offer->job_title = $request->job_title;
                 $offer->introduce = $request->introduce;
                 $offer->thumbnail = basename($thumbnail_path);
-                $offer->deadline=$deadline;
-                
+                $offer->deadline = $deadline;
+
                 //言語のtrue or falseのための初期化
                 $languages = [
                     "ruby" => 0,
@@ -214,6 +211,7 @@ class RegistrationJobOfferController extends Controller
     {
         $offer = CompanyOffer::findOrFail($id);
         $offer->delete();
+
         //フラッシュメッセージ
         Session::flash('message', '削除が完了しました。');
         return redirect()->route('company.registration.index')->with('message', '削除が完了しました。');

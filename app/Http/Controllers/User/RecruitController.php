@@ -3,15 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ApplicantRequest;
 use Illuminate\Http\Request;
 use App\Models\CompanyOffer;
-use App\Models\Company;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use Throwable;
-use Illuminate\Support\Facades\DB;
+
 
 class RecruitController extends Controller
 {

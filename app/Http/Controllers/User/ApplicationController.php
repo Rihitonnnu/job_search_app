@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use Illuminate\Http\Request;
 use Throwable;
 use App\Models\CompanyApplicants;
 use App\Models\CompanyOffer;
 use App\Models\User;
-use App\Models\UserInfo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;

@@ -45,7 +45,6 @@ class SpreadSheetController extends Controller
     public function store(Request $request)
     {
         $user=User::findOrFail(Auth::id());
-        // dd($user);
         try{
             DB::transaction(function () use($request,$user) {
                 $user->sheet_url=$request->name;
@@ -96,11 +95,8 @@ class SpreadSheetController extends Controller
             'deadline'  => $offer->deadline,
         ];
 
-        // dd($insert_data);
-
         $spread_sheet->insert_spread_sheet($insert_data);
 
-        // return response('格納に成功！！', 200);
         Session::flash('message','シートに募集情報を記入しました。');
         return to_route('user.recruit.index');
     }
