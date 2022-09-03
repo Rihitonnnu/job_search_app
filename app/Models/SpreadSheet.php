@@ -45,7 +45,6 @@ class SpreadSheet extends Model
                 $preset_data['headline'],
                 $preset_data['deadline'],
             ];
-            // dd($preset);
             $values->setValues([
                 'values' => $preset
             ]);
@@ -55,7 +54,6 @@ class SpreadSheet extends Model
                 $values,
                 ["valueInputOption" => 'USER_ENTERED']
             );
-            // dd($values);
         }
         $row = $count + 1;
         // データを整形（この順序でシートに格納される）
@@ -69,7 +67,6 @@ class SpreadSheet extends Model
         $values->setValues([
             'values' => $contact
         ]);
-        // dd($values);
         $sheets->spreadsheets_values->append(
             $sheet_id,
             'A' . $row,
