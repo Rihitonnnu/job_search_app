@@ -33,6 +33,3 @@ PHP 8.1.6
 Laravel 9.2.0  
 TailwindCSS 3.1.0  
 vite 2.9.11  
-
-
-
