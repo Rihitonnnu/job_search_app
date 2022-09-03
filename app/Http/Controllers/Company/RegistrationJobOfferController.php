@@ -7,11 +7,9 @@ use App\Models\CompanyOffer;
 use App\Models\CompanyLanguage;
 use App\Http\Requests\JobOfferRequest;
 use App\Models\Company;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Throwable;
 use Carbon\Carbon;
@@ -32,9 +30,6 @@ class RegistrationJobOfferController extends Controller
         $languages = ['ruby', 'javascript', 'java', 'python', 'c', 'php'];
         return view('company.registration_job.index', compact(['myoffers', 'languages']));
     }
-    // $messageKey,$flashMessage
-
-    // ,'messageKey','flashMessage'
 
     /**
      * Show the form for creating a new resource.
@@ -45,13 +40,7 @@ class RegistrationJobOfferController extends Controller
     {
         return view('company.registration_job.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(JobOfferRequest $request)
     {
         //thumbnailの保存
