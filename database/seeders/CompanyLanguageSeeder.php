@@ -16,13 +16,34 @@ class CompanyLanguageSeeder extends Seeder
     public function run()
     {
         DB::table('company_languages')->insert([
-            'company_offer_id'=>1,
-            'ruby'=>1,
-            'javascript'=>1,
-            'java'=>1,
-            'python'=>0,
-            'c'=>0,
-            'php'=>0,
+            [
+                'company_offer_id'=>1,
+                'ruby'=>1,
+                'javascript'=>1,
+                'java'=>1,
+                'python'=>0,
+                'c'=>0,
+                'php'=>0,
+            ],
+            [
+                'company_offer_id'=>2,
+                'ruby'=>1,
+                'javascript'=>1,
+                'java'=>1,
+                'python'=>0,
+                'c'=>0,
+                'php'=>0,
+            ],
+            [
+                'company_offer_id'=>3,
+                'ruby'=>1,
+                'javascript'=>1,
+                'java'=>1,
+                'python'=>0,
+                'c'=>0,
+                'php'=>0,
+            ],
+
         ]);
     }
 }
